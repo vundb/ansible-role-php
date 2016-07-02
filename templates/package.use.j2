@@ -1,0 +1,3 @@
+{% set php_use_flags_line = 'dev-lang/php' %}
+{% set php_use_flags_line = 'dev-lang/php ' + php_extensions_merged|join(" ") %}
+{{ php_use_flags_line }}

@@ -1,0 +1,25 @@
+---
+
+# set facts
+
+- set_fact:
+    php_extensions_merged: "{{ php_extensions_default|union(php_extensions) }}"
+
+
+# write package config
+
+- name: write new package use file
+  become: yes
+  template: src="package.use.j2" dest="/etc/portage/package.use/dev-lang-php-extensions"
+
+
+# install version specific packages
+
+- include: install-php55.yml
+  when: php_version == "5.5"
+
+- include: install-php56.yml
+  when: php_version == "5.6"
+
+- include: install-php70.yml
+  when: php_version == "7.0"

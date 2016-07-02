@@ -1,0 +1,21 @@
+#
+# Array with services to be restarted on changes.
+#
+php_services: []
+
+#
+# PHP Version prefered to be installed.
+# Available versions:
+#   - "5.5"
+#   - "5.6"
+#   - "7.0"
+#
+php_version: "5.6"
+
+#
+# Array with php extensions to be installed as custom.
+#
+# Available extensions:
+#   - apache2
+#
+php_extensions: []

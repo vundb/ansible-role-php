@@ -1,0 +1,18 @@
+#
+# Array with php extensions to be installed as default.
+#
+php_extensions_default:
+  - mysql
+  - mysqli
+  - gd
+  - xml
+  - curl
+  - gd
+  - soap
+  - zip
+  - pdo
+  - intl
+  - truetype
+  - bcmath
+  - pcntl
+  - xmlwriter
