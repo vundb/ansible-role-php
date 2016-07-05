@@ -5,6 +5,7 @@ php_services: []
 
 #
 # PHP Version prefered to be installed.
+#
 # Available versions:
 #   - "5.5"
 #   - "5.6"
@@ -19,3 +20,14 @@ php_version: "5.6"
 #   - apache2
 #
 php_extensions: []
+
+
+#
+# PHP ini configuration used as custom.
+#
+# php_config:
+#   - { target: "cli",     section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
+#   - { target: "apache2", section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
+#   - { target: "fpm",     section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
+#
+php_config: []

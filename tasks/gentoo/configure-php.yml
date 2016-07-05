@@ -1,0 +1,27 @@
+---
+
+# write php-cli configuration
+
+- name: write php-cli configuration
+  become: yes
+  ini_file:
+    dest: "/etc/php/cli-php{{ php_version }}/php.ini"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  when: (item.target == "cli")
+  with_items: "{{ php_config_merged }}"
+
+
+# write php-apache2 configuration
+
+- name: write php-apache2 configuration
+  become: yes
+  ini_file:
+    dest: "/etc/php/apache2-php{{ php_version }}/php.ini"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  when: (item.target == "apache2") and ("apache2" in php_extensions_merged)
+  with_items: "{{ php_config_merged }}"
+  notify: php - restart
