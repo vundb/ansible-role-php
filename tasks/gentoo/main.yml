@@ -4,6 +4,7 @@
 
 - set_fact:
     php_extensions_merged: "{{ php_extensions_default|union(php_extensions) }}"
+    php_config_merged: "{{ php_config_default | union(php_config) }}"
 
 
 # write package config
@@ -23,3 +24,8 @@
 
 - include: install-php70.yml
   when: php_version == "7.0"
+
+
+# configure php ini
+
+- include: configure-php.yml

@@ -16,3 +16,19 @@ php_extensions_default:
   - bcmath
   - pcntl
   - xmlwriter
+
+
+#
+# PHP ini configuration used as default.
+#
+# php_config_default:
+#   - { target: "cli",     section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
+#   - { target: "apache2", section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
+#   - { target: "fpm",     section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
+#
+php_config_default:
+  - { target: "cli",     section: "PHP",     option: "date.timezone",          value: "Europe/Berlin" }
+  - { target: "cli",     section: "PHP",     option: "post_max_size",          value: "32M" }
+  - { target: "apache2", section: "PHP",     option: "date.timezone",          value: "Europe/Berlin" }
+  - { target: "apache2", section: "PHP",     option: "post_max_size",          value: "32M" }
+  - { target: "apache2", section: "Session", option: "session.gc_maxlifetime", value: "7200" }
