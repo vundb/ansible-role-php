@@ -15,6 +15,16 @@
 - include: ../../portage/tasks/gentoo/main.yml
   vars:
     portage_configuration:
+      - section: "package.use"
+        file: "dev-lang-php-apache2"
+        entries:
+          - ">=app-eselect/eselect-php-0.9.2 fpm"
+    portage_packages: []
+  when: "'fpm' in php_extensions_merged"
+
+- include: ../../portage/tasks/gentoo/main.yml
+  vars:
+    portage_configuration:
       - section: 'package.accept_keywords'
         file: 'dev-lang-php'
         entries:
@@ -28,3 +38,11 @@
   become: yes
   portage: package=">=dev-lang/php-7.0" state="emerged" newuse=yes update=yes
   notify: php - restart
+
+
+# post installation tasks
+
+- name: ensure php-fpm service is running (if requred)
+  become: yes
+  service: name=php-fpm state=started enabled=yes
+  when: "'fpm' in php_extensions_merged"
