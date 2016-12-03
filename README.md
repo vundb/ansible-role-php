@@ -34,7 +34,7 @@ Example Playbook
 - hosts: all
   roles:
     - role: vundb-php
-      php_version: "7.0"
+      php_extensions: ["apache2"]
 ```
 
 License
