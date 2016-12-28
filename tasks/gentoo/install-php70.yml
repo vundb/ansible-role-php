@@ -29,6 +29,10 @@
         file: 'dev-lang-php'
         entries:
           - '>=dev-lang/php-7.0 ~amd64'
+      - section: "package.mask"
+        file: "dev-lang-php"
+        entries:
+          - ">=dev-lang/php-7.1"
     portage_packages: []
 
 
