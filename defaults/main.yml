@@ -31,3 +31,15 @@ php_extensions: []
 #   - { target: "fpm",     section: "PHP", option: "date.timezone", value: "Europe/Berlin" }
 #
 php_config: []
+
+
+#
+# System user for php-fpm process.
+#
+php_fpm_user: "nginx"
+
+
+#
+# System group for php-fpm process.
+#
+php_fpm_group: "nginx"
