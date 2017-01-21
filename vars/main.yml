@@ -32,3 +32,15 @@ php_config_default:
   - { target: "apache2", section: "PHP",     option: "date.timezone",          value: "Europe/Berlin" }
   - { target: "apache2", section: "PHP",     option: "post_max_size",          value: "32M" }
   - { target: "apache2", section: "Session", option: "session.gc_maxlifetime", value: "7200" }
+
+
+#
+# PHP FPM daemon configuration
+#
+# php_fpm_config:
+#   - { section: "www", option: "user",  value: "{{ php_fpm_user }}" }
+#   - { section: "www", option: "group", value: "{{ php_fpm_group }}" }
+#
+php_fpm_config:
+  - { section: "www", option: "user",  value: "{{ php_fpm_user }}" }
+  - { section: "www", option: "group", value: "{{ php_fpm_group }}" }

@@ -26,6 +26,8 @@
   when: php_version == "7.0"
 
 
-# configure php ini
+# configure php
 
 - include: configure-php.yml
+
+- include: configure-php-fpm.yml

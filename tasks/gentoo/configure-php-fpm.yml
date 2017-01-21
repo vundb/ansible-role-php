@@ -1,0 +1,13 @@
+---
+
+# write php-fpm configuration
+
+- name: write php-fmp configuration
+  become: yes
+  ini_file:
+    dest: "/etc/php/fpm-php7.0/fpm.d/www.conf"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  when: "'fpm' in php_extensions_merged"
+  with_items: "{{ php_fpm_config }}"
