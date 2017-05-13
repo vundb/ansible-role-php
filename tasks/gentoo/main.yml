@@ -13,17 +13,45 @@
   become: yes
   template: src="package.use.j2" dest="/etc/portage/package.use/dev-lang-php-extensions"
 
+- include: ../../vundb-portage/tasks/gentoo/main.yml
+  vars:
+    portage_configuration:
+      - section: "package.use"
+        file: "dev-lang-php-apache2"
+        entries:
+          - ">=app-eselect/eselect-php-0.9.2 apache2"
+    portage_packages: []
+  when: "'apache2' in php_extensions_merged"
+
+- include: ../../vundb-portage/tasks/gentoo/main.yml
+  vars:
+    portage_configuration:
+      - section: "package.use"
+        file: "dev-lang-php-fpm"
+        entries:
+          - ">=app-eselect/eselect-php-0.9.2 fpm"
+    portage_packages: []
+  when: "'fpm' in php_extensions_merged"
+
 
 # install version specific packages
-
-- include: install-php55.yml
-  when: php_version == "5.5"
 
 - include: install-php56.yml
   when: php_version == "5.6"
 
 - include: install-php70.yml
   when: php_version == "7.0"
+
+- include: install-php71.yml
+  when: php_version == "7.1"
+
+
+# post installation tasks
+
+- name: ensure php-fpm service is running (if requred)
+  become: yes
+  service: name=php-fpm state=started enabled=yes
+  when: "'fpm' in php_extensions_merged"
 
 
 # configure php

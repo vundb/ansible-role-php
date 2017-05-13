@@ -8,17 +8,17 @@
       - section: 'package.accept_keywords'
         file: 'dev-lang-php'
         entries:
-          - '>=dev-lang/php-7.0 ~amd64'
+          - '>=dev-lang/php-7.1 ~amd64'
       - section: "package.mask"
         file: "dev-lang-php"
         entries:
-          - ">=dev-lang/php-7.1"
+          - ">=dev-lang/php-7.2"
     portage_packages: []
 
 
-# install php 7.0
+# install php 7.1
 
-- name: install php 7.0
+- name: install php 7.1
   become: yes
-  portage: package=">=dev-lang/php-7.0" state="emerged" newuse=yes update=yes
+  portage: package=">=dev-lang/php-7.1" state="emerged" newuse=yes update=yes
   notify: php - restart
