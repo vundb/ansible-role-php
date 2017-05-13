@@ -5,16 +5,6 @@
 - include: ../../vundb-portage/tasks/gentoo/main.yml
   vars:
     portage_configuration:
-      - section: "package.use"
-        file: "dev-lang-php-apache2"
-        entries:
-          - ">=app-eselect/eselect-php-0.9.1 apache2"
-    portage_packages: []
-  when: "'apache2' in php_extensions_merged"
-
-- include: ../../vundb-portage/tasks/gentoo/main.yml
-  vars:
-    portage_configuration:
       - section: "package.mask"
         file: "dev-lang-php"
         entries:
