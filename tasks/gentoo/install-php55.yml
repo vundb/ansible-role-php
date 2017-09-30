@@ -2,7 +2,7 @@
 
 # write package config
 
-- include: ../../vundb-portage/tasks/gentoo/main.yml
+- import_tasks: ../../vundb-portage/tasks/gentoo/main.yml
   vars:
     portage_configuration:
       - section: "package.use"
@@ -12,7 +12,7 @@
     portage_packages: []
   when: "'apache2' in php_extensions_merged"
 
-- include: ../../vundb-portage/tasks/gentoo/main.yml
+- import_tasks: ../../vundb-portage/tasks/gentoo/main.yml
   vars:
     portage_configuration:
       - section: "package.mask"

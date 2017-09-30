@@ -9,11 +9,11 @@
 
 # write package config
 
-- name: write new package use file
+- name: write used php extensions into package.use file
   become: yes
   template: src="package.use.j2" dest="/etc/portage/package.use/dev-lang-php-extensions"
 
-- include: ../../vundb-portage/tasks/gentoo/main.yml
+- import_tasks: ../../vundb-portage/tasks/gentoo/main.yml
   vars:
     portage_configuration:
       - section: "package.use"
@@ -23,7 +23,7 @@
     portage_packages: []
   when: "'apache2' in php_extensions_merged"
 
-- include: ../../vundb-portage/tasks/gentoo/main.yml
+- import_tasks: ../../vundb-portage/tasks/gentoo/main.yml
   vars:
     portage_configuration:
       - section: "package.use"
@@ -36,13 +36,13 @@
 
 # install version specific packages
 
-- include: install-php56.yml
+- import_tasks: install-php56.yml
   when: php_version == "5.6"
 
-- include: install-php70.yml
+- import_tasks: install-php70.yml
   when: php_version == "7.0"
 
-- include: install-php71.yml
+- import_tasks: install-php71.yml
   when: php_version == "7.1"
 
 
@@ -56,6 +56,6 @@
 
 # configure php
 
-- include: configure-php.yml
+- import_tasks: configure-php.yml
 
 - include: configure-php-fpm.yml
