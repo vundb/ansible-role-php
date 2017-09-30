@@ -45,6 +45,9 @@
 - import_tasks: install-php71.yml
   when: php_version == "7.1"
 
+- import_tasks: install-php72.yml
+  when: php_version == "7.2"
+
 
 # post installation tasks
 
@@ -58,4 +61,5 @@
 
 - import_tasks: configure-php.yml
 
-- include: configure-php-fpm.yml
+# the tasks included in this playbook are moved to configure-php.yml
+#- import_tasks: configure-php-fpm.yml
