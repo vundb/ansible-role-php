@@ -15,7 +15,7 @@ Role Variables
 Array with services to be restarted after configuration changes.
 
 - `php_version`:
-PHP Version to be installed. Supported values are ["5.6", "7.0", "7.1"]
+PHP Version to be installed. Supported values are ["5.6", "7.0", "7.1", "7.2"]
 
 - `php_extensions`:
 Array with PHP extensions to be installed. Supported values are ["apache2", "fpm"]

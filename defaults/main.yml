@@ -10,8 +10,9 @@ php_services: []
 #   - "5.6"
 #   - "7.0"
 #   - "7.1"
+#   - "7.2"
 #
-php_version: "7.0"
+php_version: "7.1"
 
 #
 # Array with php extensions to be installed as custom.
