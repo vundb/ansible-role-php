@@ -15,7 +15,7 @@ Role Variables
 Array with services to be restarted after configuration changes.
 
 - `php_version`:
-PHP Version to be installed. Supported values are ["5.6", "7.0", "7.1", "7.2"]
+PHP Version to be installed. Supported values are [5.6, 7.0, 7.1, 7.2, 7.3]
 
 - `php_extensions`:
 Array with PHP extensions to be installed. Supported values are ["apache2", "fpm"]
@@ -34,6 +34,7 @@ Example Playbook
 - hosts: all
   roles:
     - role: vundb-php
+      php_version: "7.2"
       php_extensions: ["apache2"]
 ```
 
