@@ -1,0 +1,36 @@
+---
+
+# write package config
+
+- name: ensure old configuration entries are not present
+  become: yes
+  file:
+    dest: "/etc/portage/{{ item }}"
+    state: absent
+  with_items:
+    - package.accept_keywords/dev-lang-php
+    - package.use/dev-lang-php
+    - package.unmask/dev-lang-php
+
+- name: write new package configuration entries
+  become: yes
+  lineinfile:
+    dest: "/etc/portage/{{ item.dest }}"
+    line: "{{ item.line }}"
+    create: yes
+  with_items:
+    - { dest: "package.accept_keywords/dev-lang-php", line: "dev-lang/php:{{ php_version }}" }
+    - { dest: "package.use/dev-lang-php",             line: "dev-lang/php:{{ php_version }}" }
+    - { dest: "package.unmask/dev-lang-php",          line: "dev-lang/php:{{ php_version }}" }
+
+
+# install php
+
+- name: install
+  become: yes
+  portage:
+    package: "dev-lang/php:{{ php_version }}"
+    state: emerged
+    newuse: yes
+    update: yes
+  notify: php-restart

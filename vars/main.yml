@@ -44,3 +44,8 @@ php_config_default:
 php_fpm_config:
   - { section: "www", option: "user",  value: "{{ php_fpm_user }}" }
   - { section: "www", option: "group", value: "{{ php_fpm_group }}" }
+
+#
+# All supported version, which can be installed with this role
+#
+php_version_supported: [5.6, "5.6", 7.0, "7.0", 7.1, "7.1", 7.2, "7.2", 7.3, "7.3"]
