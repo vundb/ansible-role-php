@@ -6,6 +6,10 @@
   fail: msg="'{{ ansible_distribution }}' is not supported by this role"
   when: ansible_distribution not in ["Gentoo"]
 
+- name: check if chosen version is supported
+  fail: msg="PHP version '{{ php_version }}' is not supported by this role"
+  when: php_version not in php_version_supported
+
 
 # run os specific tasks
 

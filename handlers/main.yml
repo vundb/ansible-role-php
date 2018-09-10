@@ -1,6 +1,6 @@
 ---
 
-- name: php - restart
+- name: php-restart
   become: yes
   service: name="{{ item }}" state="restarted"
   with_items: "{{ php_services }}"
