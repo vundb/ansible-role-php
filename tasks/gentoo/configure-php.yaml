@@ -24,7 +24,7 @@
     value: "{{ item.value }}"
   when: (item.target == "apache2") and ("apache2" in php_extensions_merged)
   with_items: "{{ php_config_merged }}"
-  notify: php - restart
+  notify: php-restart
 
 
 # write php-fpm configuration
@@ -38,4 +38,4 @@
     value: "{{ item.value }}"
   when: "'fpm' in php_extensions_merged"
   with_items: "{{ php_fpm_config }}"
-  notify: php - restart
+  notify: php-restart
